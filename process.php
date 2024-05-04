@@ -1,6 +1,6 @@
 <?php
 // Connect to your database
-$servername = "https://akram400.github.io/A.Project_DAW/";
+$servername = "localhost";
 $username = "root"; // Your database username
 $password = ""; // Your database password
 $dbname = "agency_db"; // Your database name
@@ -21,6 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subject = $_POST['subject'];
     $message = $_POST['message'];
 
+    $table_name = "contact";
+
     // SQL query to insert data into the database
     $sql = "INSERT INTO contact (name, email, Subject, Message) VALUES ('$name', '$email', '$subject', '$message')";
 
@@ -34,4 +36,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Close the database connection
 $conn->close();
 ?>
-
