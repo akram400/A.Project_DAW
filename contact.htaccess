@@ -1,0 +1,16 @@
+# Block access to SQL files
+<Files "*.sql">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Allow access to process.php
+<Files "process.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+# Allow POST method
+<Limit POST>
+    Allow from all
+</Limit>
