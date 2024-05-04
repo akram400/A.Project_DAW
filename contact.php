@@ -1,31 +1,27 @@
 <?php
-// Connect to your database
-$servername = "localhost";
-$username = "root"; // Your database username
-$password = ""; // Your database password
-$dbname = "agency_db"; // Your database name
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+if($_SERVER['REQUEST_METHOD']=='POST'){
+  $name=$_POST['name'];
+  $email=$_POST['email'];
+  $subject=$_POST['subject'];
+  $msg=$_POST['message'];
 }
 
-// SQL query to fetch data from your table
-$sql = "SELECT * FROM contact";
-$result = $conn->query($sql);
+$con=new mysqli('localhost','root','','agency_db');
+if($con){
+  //echo"Connection Successful";
+   $sql="insert into `data`(name,email,subject,message) values('$name','$email','$subject','$msg')";
+   $result=mysqli_query($con,$sql);
+   if($result){
+    echo"Data inserted Successfuly";
+   }
+   else{
+    die(mysqli_error($con));
+   }
 
-// Check if there are results
-if ($result->num_rows > 0) {
-  // Output data of each row
-  while($row = $result->fetch_assoc()) {
-    echo "Name: " . $row["name"]. " - Email: " . $row["email"]. " - Subject" .$row["Subject"] . " - Message" . $row["Message"]  "<br>";
-  }
-} else {
-  echo "0 results";
 }
-$conn->close();
+else{
+  die(mysqli_error($con));
+}
+
 ?>
 
