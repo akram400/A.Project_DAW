@@ -1,27 +1,22 @@
 <?php
 if($_SERVER['REQUEST_METHOD']=='POST'){
-  $name=$_POST['name'];
-  $email=$_POST['email'];
-  $subject=$_POST['subject'];
-  $msg=$_POST['msg'];
+  $name = $_POST['name'];
+  $email = $_POST['email'];
+  $subject = $_POST['subject'];
+  $message = $_POST['message'];
 }
 
-$con=new mysqli('localhost','root','','agency_db');
+$con = new mysqli('localhost', 'root', '', 'travel_db');
 if($con){
   //echo"Connection Successful";
-   $sql="insert into `data`(name,email,subject,msg) values('$name','$email','$subject','$msg')";
-   $result=mysqli_query($con,$sql);
-   if($result){
-    echo"Data inserted Successfuly";
-   }
-   else{
+  $sql = "INSERT INTO `data` (name, email, subject, msg) VALUES ('$name', '$email', '$subject', '$message')";
+  $result = mysqli_query($con, $sql);
+  if($result){
+    echo "Data inserted Successfully";
+  } else {
     die(mysqli_error($con));
-   }
-
-}
-else{
+  }
+} else {
   die(mysqli_error($con));
 }
-
 ?>
-
