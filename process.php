@@ -1,6 +1,6 @@
 <?php
 // Connect to your database
-$servername = "localhost";
+$servername = "https://akram400.github.io/A.Project_DAW/";
 $username = "root"; // Your database username
 $password = ""; // Your database password
 $dbname = "agency_db"; // Your database name
